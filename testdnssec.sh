@@ -12,9 +12,9 @@ randomstr=$(date | sha1sum | cut -c -30)
 
 echo Testing: $randomstr
 
-# Both, because we don't know at which of the two loadbalanced dnssectest-servers we will end up...
 # Google test (change this as you please, with resolvers of choice and with or without /dev/null 2>&1)
 dig +adflag +short $randomstr.$randomstr.d.sidnlabs.nl @8.8.8.8 > /dev/null 2>&1
+# you can also add +cd to see the difference
 
 # just for test...
 #dig +short DS $randomstr.d.sidnlabs.nl
