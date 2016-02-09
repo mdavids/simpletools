@@ -2,7 +2,7 @@
 #
 #
 
-if [ $# -eq 0 ]
+if [ $# -eq 0 ] || [ $# -gt 2 ]
 then
    echo "Usage:"
    echo "$0 <searchstring> [-d | -l]"
