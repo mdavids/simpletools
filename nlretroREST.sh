@@ -16,7 +16,7 @@ if [ "$2" == "-d" ]
 then
 	# Sort with most recent date first
 	
-	curl -s 'http://retro.domain-registry.nl/search/sidn' | jq -r 'to_entries[] | [.key, .value] | @csv' | \
+	curl -s http://retro.domain-registry.nl/search/$1 | jq -r 'to_entries[] | [.key, .value] | @csv' | \
 	sed 's/"//g' | awk -F\, '{print $2";"$1}' | sort  -t"-" -rk 3 -rk 2 -rk 1 | awk -F\; '{print $2";"$1}'	
 else
 	if [ "$2" == "-l" ]
