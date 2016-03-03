@@ -22,7 +22,8 @@ else
 	if [ "$2" == "-l" ]
 	then
 		# Sort with shortest name first      
-		echo $1 | nc retro.domain-registry.nl 43 | sed '1d;$d' |  awk '{ print length, $0 }' | sort -n | cut -d" " -f2-
+		curl -s http://retro.domain-registry.nl/search/$1 | jq -r 'to_entries[] | [.key, .value] | @csv' | \
+                sed 's/"//g' | awk '{ print length, $0 }' | sort -n | cut -d" " -f2-
 	else
 		if [ "$2" != "" ]
 		then
