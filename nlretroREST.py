@@ -7,14 +7,14 @@
 import sys
 import requests
 
-API_URL = "http://retro.domain-registry.nl/"
+API_URL = "http://retro.domain-registry.nl/search/"
 
-if len(sys.argv) == 1:
+if len(sys.argv) != 2:
    print "Usage: %s searchstring" % sys.argv[0]
    sys.exit(1)
 
 try:
-   res = requests.get(API_URL + "search/acropolis")
+   res = requests.get(API_URL + sys.argv[1])
 
    if res.status_code != 200:
       print "Error (%i):" % res.status_code
@@ -36,4 +36,3 @@ try:
 except ValueError:
    print "Error: Decoding of JSON has failed."
    sys.exit(1)
-   
