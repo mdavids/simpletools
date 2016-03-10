@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+# By SIDN Labs
 #
 
 if [ $# -eq 0 ] || [ $# -gt 2 ]
